@@ -1,0 +1,22 @@
+.subscription-list {
+  color: rgb(255, 255, 255); /* Change this to the desired color */
+}
+
+.subscription-list h2 {
+  color: black;
+}
+
+.subscription-list ul {
+  list-style-type: none; /* Remove default list styling */
+  padding: 0; /* Remove default padding */
+}
+
+.subscription-list li {
+  margin-bottom: 10px;
+  display: block; /* Ensure list items are block elements */
+}
+
+.subscription-list button {
+  margin-left: 10px;
+  color: red; /* Change this to the desired color for the button text */
+}
