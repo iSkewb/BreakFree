@@ -72,7 +72,6 @@ const AddSubscription = () => {
           </form>
         </div>
         <div className="subscription-list-container">
-          <h3>Your Subscriptions</h3>
           <SubscriptionList
             subscriptions={subscriptions}
             onDelete={(id) => removeSubscription(id)} // Handle delete via context
