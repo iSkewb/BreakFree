@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import NavBar from './NavBar';
 import SubscriptionList from './SubscriptionList'; // Import SubscriptionList
 import './AddSubscription.css'; // Import AddSubscription.css
 

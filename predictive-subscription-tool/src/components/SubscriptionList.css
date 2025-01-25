@@ -1,5 +1,6 @@
 .subscription-list {
   color: rgb(255, 255, 255); /* Change this to the desired color */
+  background-color: #004878;
 }
 
 .subscription-list h2 {
@@ -8,6 +9,7 @@
 
 .subscription-list ul {
   list-style-type: none; /* Remove default list styling */
+  display: block;
   padding: 0; /* Remove default padding */
 }
 

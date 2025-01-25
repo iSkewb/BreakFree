@@ -15,7 +15,7 @@
   float: center;
 }
 
-ul {
+.nav-bar ul {
   list-style-type: none;
   margin: 0;
   padding: 8;
@@ -24,11 +24,11 @@ ul {
   text-align: center;
 }
 
-li {
+.nav-bar li {
   float: left;
 }
 
-li a {
+.nav-bar li a {
   display: block;
   color: white;
   text-align: center;
