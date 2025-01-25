@@ -20,14 +20,6 @@ const Profile = () => {
           <p><strong>Member Since:</strong> {userInfo.memberSince}</p>
           <p><strong>Subscription Plan:</strong> {userInfo.subscriptionPlan}</p>
         </div>
-        <div className="profile-activity">
-          <h2>Recent Activity</h2>
-          <ul>
-            {userInfo.recentActivity.map((activity, index) => (
-              <li key={index}>{activity}</li>
-            ))}
-          </ul>
-        </div>
         <button className="edit-button">Edit Profile</button>
       </div>
     </div>
