@@ -28,6 +28,7 @@ const ContactUs = () => {
 
   return (
     <div>
+      <p></p>
       <h2>Contact Us</h2>
       <form onSubmit={handleSubmit}>
         <div>
