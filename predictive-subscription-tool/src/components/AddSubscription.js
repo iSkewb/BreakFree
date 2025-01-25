@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSubscriptions } from '../context/SubscriptionContext';
-import NavBar from './NavBar';
 import SubscriptionList from './SubscriptionList'; // Import SubscriptionList
-import CategoryPieChart from './CategoryPieChart'; // Import CategoryPieChart
 import './AddSubscription.css'; // Import AddSubscription.css
 
 const AddSubscription = () => {
