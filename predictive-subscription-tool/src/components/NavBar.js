@@ -11,9 +11,8 @@ const NavBar = () => {
         <ul>
             <li><a href="/dashboard">Dashboard</a></li>
             <li><a href="/add-subscription">Subscriptions</a></li>
-            {/* <li><a href="qualifications.html">Qualifications</a></li>
-            <li><a href="service.html">Service</a></li>
-            <li><a href="genai.html">General AI Page</a></li> */}
+            <li><a href="/help">Help</a></li>
+            <li><a href="/contact-us">Contact Us</a></li>
         </ul>
     </div>
   );
