@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSubscriptions } from '../context/SubscriptionContext';
 import SubscriptionList from '../components/SubscriptionList';
+import CategoryPieChart from '../components/CategoryPieChart'; // Import the CategoryPieChart component
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -18,6 +19,23 @@ const Dashboard = () => {
     setSummary({ totalSubscriptions, totalSpending });
   }, [subscriptions]);
 
+  // Prepare the data for the pie chart
+  const getCategoryData = () => {
+    const categoryData = subscriptions.reduce((acc, subscription) => {
+      const { category, cost } = subscription;
+      if (!acc[category]) {
+        acc[category] = 0;
+      }
+      acc[category] += cost;
+      return acc;
+    }, {});
+
+    return Object.keys(categoryData).map((key) => ({
+      name: key,
+      value: categoryData[key],
+    }));
+  };
+
   return (
     <div className="dashboard">
       <h2 className="dashboard-title">Dashboard</h2>
@@ -33,6 +51,13 @@ const Dashboard = () => {
           <p>${summary.totalSpending.toFixed(2)}</p>
         </div>
       </div>
+
+      {/* Category Pie Chart Section */}
+      <div className="dashboard-category-pie-chart">
+        <h3>Spending by Category</h3>
+        <CategoryPieChart data={getCategoryData()} /> {/* Render the CategoryPieChart component */}
+      </div>
+
       {/* Recent Activity Section */}
       <div className="dashboard-recent-activities">
         <h3>Recent Activities</h3>
