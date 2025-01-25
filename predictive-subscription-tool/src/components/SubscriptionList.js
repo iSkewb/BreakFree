@@ -8,7 +8,8 @@ const SubscriptionList = ({ subscriptions, onDelete }) => {
       <ul>
         {subscriptions.map((sub, index) => (
           <li key={index}>
-            <strong>{sub.name}</strong>: ${sub.cost} per {sub.frequency} 
+            <span>
+              <strong>{sub.name}</strong> </span> ${sub.cost} {sub.frequency}
             <button onClick={() => onDelete(index)}>Delete</button>
           </li>
         ))}

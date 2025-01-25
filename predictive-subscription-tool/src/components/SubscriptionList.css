@@ -1,6 +1,5 @@
 .subscription-list {
-  color: rgb(255, 255, 255); /* Change this to the desired color */
-  background-color: #004878;
+  color: rgb(0, 0, 0); /* Change this to the desired color */
 }
 
 .subscription-list h2 {
@@ -9,16 +8,28 @@
 
 .subscription-list ul {
   list-style-type: none; /* Remove default list styling */
-  display: block;
   padding: 0; /* Remove default padding */
+  font-size: larger;
 }
 
 .subscription-list li {
   margin-bottom: 10px;
-  display: block; /* Ensure list items are block elements */
+  display: flex; /* Use Flexbox to align items */
+  justify-content: space-between; /* Space out the text and button */
+  align-items: center; /* Center items vertically */
+  padding-left: 200px;
+  padding-right: 200px;
 }
 
 .subscription-list button {
   margin-left: 10px;
   color: white; /* Change this to the desired color for the button text */
+  background-color: #004878; /* Add background color to the button */
+  border: none; /* Remove default border */
+  padding: 5px 10px; /* Add padding to the button */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+.subscription-list button:hover {
+  background-color: #003366; /* Change background color on hover */
 }
