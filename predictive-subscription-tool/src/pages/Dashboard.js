@@ -10,7 +10,15 @@ const Dashboard = () => {
 
   useEffect(() => {
     const totalSubscriptions = subscriptions.length;
-    const totalSpending = subscriptions.reduce((total, sub) => total + sub.cost, 0);
+
+    // Calculate total monthly spending
+    const totalSpending = subscriptions.reduce((total, sub) => {
+      if (sub.frequency === 'yearly') {
+        return total + sub.cost / 12; // Divide yearly cost by 12
+      }
+      return total + sub.cost; // Add monthly cost as is
+    }, 0);
+
     setSummary({ totalSubscriptions, totalSpending });
 
     // Update recent activities when subscriptions change
@@ -25,11 +33,12 @@ const Dashboard = () => {
   // Prepare the data for the pie chart
   const getCategoryData = () => {
     const categoryData = subscriptions.reduce((acc, subscription) => {
-      const { category, cost } = subscription;
+      const { category, cost, frequency } = subscription;
+      const adjustedCost = frequency === 'yearly' ? cost / 12 : cost; // Adjust cost based on frequency
       if (!acc[category]) {
         acc[category] = 0;
       }
-      acc[category] += cost;
+      acc[category] += adjustedCost;
       return acc;
     }, {});
 
@@ -50,7 +59,7 @@ const Dashboard = () => {
           <p>{summary.totalSubscriptions}</p>
         </div>
         <div className="summary-card">
-          <h3>Total Spending</h3>
+          <h3>Total Monthly Spending</h3>
           <p>${summary.totalSpending.toFixed(2)}</p>
         </div>
       </div>
