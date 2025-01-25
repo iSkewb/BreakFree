@@ -17,10 +17,10 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Super Cool Predictive Subscription Tool</h1>
+      <h1>Team FREE - Subscription Management Tool</h1>
       <AddSubscription onAdd={handleAddSubscription} />
       <SubscriptionList
-        subscriptions={subscriptions}
+        subscriptions={subscriptions}s
         onDelete={handleDeleteSubscription}
       />
     </div>
