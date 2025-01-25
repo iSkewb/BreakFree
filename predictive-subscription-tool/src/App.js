@@ -1,25 +1,30 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import SubscriptionList from './components/SubscriptionList';
+import AddSubscription from './components/AddSubscription';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [subscriptions, setSubscriptions] = useState([]);
+
+  const handleAddSubscription = (subscription) => {
+    setSubscriptions([...subscriptions, subscription]);
+  };
+
+  const handleDeleteSubscription = (index) => {
+    const updatedSubscriptions = subscriptions.filter((_, i) => i !== index);
+    setSubscriptions(updatedSubscriptions);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Predictive Subscription Tool</h1>
+      <AddSubscription onAdd={handleAddSubscription} />
+      <SubscriptionList
+        subscriptions={subscriptions}
+        onDelete={handleDeleteSubscription}
+      />
     </div>
   );
-}
+};
 
 export default App;
