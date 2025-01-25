@@ -1,0 +1,18 @@
+.nav-bar {
+    background-color: red;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .nav-bar button {
+    background-color: rgb(0, 0, 0);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .nav-bar button:hover {
+    background-color: lightgray;
+  }
