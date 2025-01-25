@@ -27,7 +27,7 @@ input, select, button {
 }
 
 button {
-  background-color: #3498db;
+  background-color: #D22E1E;
   color: white;
   border: none;
   border-radius: 5px;
@@ -35,5 +35,5 @@ button {
 }
 
 button:hover {
-  background-color: #2980b9;
+  background-color: #8f1212;
 }
