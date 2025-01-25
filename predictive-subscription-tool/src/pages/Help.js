@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Dashboard = () => {
+const Help = () => {
   return (
     <div>
-      <h2>Dashboard</h2>
+      <h2>Help</h2>
       {/* Add your dashboard content here */}
     </div>
   );
 };
 
-export default Dashboard;
+export default Help;
