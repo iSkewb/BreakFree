@@ -2,18 +2,31 @@ import React, { useState } from 'react';
 import NavBar from './NavBar'; // Import the NavBar component
 import CategoryPieChart from './CategoryPieChart'; // Import the CategoryPieChart component
 
-const AddSubscription = ({ onAdd }) => {
+const AddSubscription = () => {
   const [name, setName] = useState('');
   const [cost, setCost] = useState('');
   const [frequency, setFrequency] = useState('monthly');
   const [category, setCategory] = useState('entertainment');
   const [subscriptions, setSubscriptions] = useState([]);
 
+  const handleAddSubscription = (subscription) => {
+    setSubscriptions([...subscriptions, subscription]);
+  };
+
+  const handleDeleteSubscription = (index) => {
+    const updatedSubscriptions = subscriptions.filter((_, i) => i !== index);
+    setSubscriptions(updatedSubscriptions);
+  };
+/////////////////////////////////////////////////////////////
+  const onAdd = (subscription) => {
+    console.log('Subscription added:', subscription);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const newSubscription = { name, cost: parseFloat(cost), frequency, category };
     onAdd(newSubscription);
-    setSubscriptions([...subscriptions, newSubscription]);
+    handleAddSubscription(newSubscription);
     setName('');
     setCost('');
     setCategory('entertainment');
@@ -30,7 +43,7 @@ const AddSubscription = ({ onAdd }) => {
     }, {});
 
     return Object.keys(categoryData).map((key) => ({
-      name: key,
+      name: key,  
       value: categoryData[key],
     }));
   };
