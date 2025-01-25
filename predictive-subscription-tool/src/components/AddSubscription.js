@@ -37,7 +37,6 @@ const AddSubscription = ({ onAdd }) => {
 
   return (
     <div>
-      <NavBar /> {/* Add the NavBar component */}
       <form onSubmit={handleSubmit}>
         <h2>Add Subscription</h2>
         <label>
@@ -72,7 +71,6 @@ const AddSubscription = ({ onAdd }) => {
         </label>
         <button type="submit">Add</button>
       </form>
-      <CategoryPieChart data={getCategoryData()} />
     </div>
   );
 };

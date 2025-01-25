@@ -1,29 +1,21 @@
-import React, { useState } from 'react';
-import SubscriptionList from './components/SubscriptionList';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AddSubscription from './components/AddSubscription';
-import './App.css';
+import Dashboard from './components/Dashboard';
+import NavBar from './components/NavBar';
 
 const App = () => {
-  const [subscriptions, setSubscriptions] = useState([]);
-
-  const handleAddSubscription = (subscription) => {
-    setSubscriptions([...subscriptions, subscription]);
-  };
-
-  const handleDeleteSubscription = (index) => {
-    const updatedSubscriptions = subscriptions.filter((_, i) => i !== index);
-    setSubscriptions(updatedSubscriptions);
-  };
-
   return (
-    <div className="App">
-      <h1>Team FREE - Subscription Management Tool</h1>
-      <AddSubscription onAdd={handleAddSubscription} />
-      <SubscriptionList
-        subscriptions={subscriptions}s
-        onDelete={handleDeleteSubscription}
-      />
-    </div>
+    <Router>
+      <NavBar /> {/* Add the NavBar component */}
+      <Routes>
+        <Route path="/add-subscription" element={<AddSubscription />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        {/* <Route path="/help" element={<div>Help Page</div>} /> Placeholder component */}
+        {/* <Route path="/contact-us" element={<div>Contact Us Page</div>} /> Placeholder component */}
+        <Route path="/" element={<AddSubscription />} /> {/* Default route */}
+      </Routes>
+    </Router>
   );
 };
 
