@@ -1,19 +1,14 @@
 .nav-bar {
-    background-color: #004878;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    /* width: 100%; */
-  }
-  
-  .nav-bar button {
-    background-color: rgb(0, 0, 0);
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .nav-bar button:hover {
-    background-color: lightgray;
-  }
+  background-color: #004878;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  width: 97vw;
+  color: white;
+}
+
+.nav-bar a {
+  color: white;
+  text-decoration: none;
+  float: center;
+}
