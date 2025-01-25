@@ -1,22 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useSubscriptions } from '../context/SubscriptionContext';
-import SubscriptionList from '../components/SubscriptionList';
 import CategoryPieChart from '../components/CategoryPieChart'; // Import the CategoryPieChart component
 import './Dashboard.css';
 
 const Dashboard = () => {
   const { subscriptions } = useSubscriptions();
   const [summary, setSummary] = useState({ totalSubscriptions: 0, totalSpending: 0 });
-  const [recentActivities, setRecentActivities] = useState([
-    { id: 1, action: 'Added Netflix subscription', date: '2025-01-20' },
-    { id: 2, action: 'Updated Spotify subscription', date: '2025-01-18' },
-    { id: 3, action: 'Canceled Amazon Prime subscription', date: '2025-01-15' },
-  ]);
+  const [recentActivities, setRecentActivities] = useState([]);
 
   useEffect(() => {
     const totalSubscriptions = subscriptions.length;
     const totalSpending = subscriptions.reduce((total, sub) => total + sub.cost, 0);
     setSummary({ totalSubscriptions, totalSpending });
+
+    // Update recent activities when subscriptions change
+    const newActivities = subscriptions.map((sub, index) => ({
+      id: index + 1,
+      action: `Added ${sub.name} subscription`,
+      date: new Date().toISOString().split('T')[0],
+    }));
+    setRecentActivities(newActivities);
   }, [subscriptions]);
 
   // Prepare the data for the pie chart
