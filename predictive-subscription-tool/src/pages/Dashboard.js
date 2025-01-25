@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSubscriptions } from '../context/SubscriptionContext';
 import './Dashboard.css';
 import CategoryPieChart from '../components/CategoryPieChart';
+import SubscriptionList from '../components/SubscriptionList';
 
 const Dashboard = () => {
   const { subscriptions } = useSubscriptions();
@@ -35,6 +36,12 @@ const Dashboard = () => {
           <h3>Total Spending</h3>
           <p>${summary.totalSpending}</p>
         </div>
+      </div>
+
+      {/* Subscription List Section */}
+      <div className="dashboard-subscription-list">
+        <h3>Subscriptions</h3>
+        <SubscriptionList subscriptions={subscriptions} />
       </div>
 
       {/* Recent Activity Section */}
