@@ -1,51 +1,10 @@
-.nav-bar {
-  position: fixed;
-  background-color: #004878;
-  padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  color: white;
-  align-items: right;
-}
-
-.nav-bar a {
-  color: white;
-  text-decoration: none;
-  float: center;
-}
-
-.nav-bar ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 8;
-  overflow: hidden;
-  background-color: #004878;
-  text-align: center;
-}
-
-.nav-bar li {
-  float: left;
-}
-
-.nav-bar li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/* Change the link color to #111 (black) on hover */
-li a:hover {
-  background-color: white;
-  color: #004878;
-}
-
 .navbar {
-  width: 100%;
-  background-color: #004878; /* Set the background color to dark blue */
-  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #004878;
+  padding: 10px 20px;
+  height: 100px; /* Adjust the height as needed */
 }
 
 .navbar ul {
@@ -72,4 +31,14 @@ li a:hover {
 .navbar a:hover {
   background-color: white;
   color: #004878;
+}
+
+.logo {
+  height: 100px; /* Adjust the height as needed */
+}
+
+.logo img {
+  height: 80px; /* Adjust the height as needed */
+  width: auto; /* Maintain aspect ratio */
+  padding-left: 20px;
 }
