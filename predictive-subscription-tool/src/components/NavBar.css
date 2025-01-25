@@ -42,12 +42,33 @@ li a:hover {
   color: #004878;
 }
 
+.navbar {
+  width: 100%;
+  background-color: #004878; /* Set the background color to dark blue */
+  padding: 10px 0;
+}
+
 .navbar ul {
   display: flex;
+  justify-content: right;
+  list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
 .navbar li {
   margin: 0 20px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none; /* Remove underline from links */
+  padding: 14px 16px;
+  display: block;
+  text-align: center;
+}
+
+.navbar a:hover {
+  background-color: white;
+  color: #004878;
 }
