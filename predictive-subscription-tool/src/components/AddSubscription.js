@@ -37,6 +37,7 @@ const AddSubscription = ({ onAdd, subscriptions, onDelete }) => {
 return (
   <div>
     <form onSubmit={handleSubmit}>
+      <p></p>
       <h2>Add Subscription</h2>
       <label>
         Subscription Name:
