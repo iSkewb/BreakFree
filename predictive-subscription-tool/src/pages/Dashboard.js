@@ -1,26 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSubscriptions } from '../context/SubscriptionContext';
-import './Dashboard.css';
-import CategoryPieChart from '../components/CategoryPieChart';
 import SubscriptionList from '../components/SubscriptionList';
+import './Dashboard.css';
 
 const Dashboard = () => {
   const { subscriptions } = useSubscriptions();
-
-  const totalCost = subscriptions.reduce((sum, sub) => sum + sub.cost, 0);
-
-  // State for holding summary data or metrics
-  const [summary, setSummary] = useState({
-    totalSubscriptions: subscriptions.length,
-    totalSpending: totalCost,
-  });
-
-  // Placeholder data for recent activities
-  const recentActivities = [
+  const [summary, setSummary] = useState({ totalSubscriptions: 0, totalSpending: 0 });
+  const [recentActivities, setRecentActivities] = useState([
     { id: 1, action: 'Added Netflix subscription', date: '2025-01-20' },
     { id: 2, action: 'Updated Spotify subscription', date: '2025-01-18' },
     { id: 3, action: 'Canceled Amazon Prime subscription', date: '2025-01-15' },
-  ];
+  ]);
+
+  useEffect(() => {
+    const totalSubscriptions = subscriptions.length;
+    const totalSpending = subscriptions.reduce((total, sub) => total + sub.cost, 0);
+    setSummary({ totalSubscriptions, totalSpending });
+  }, [subscriptions]);
 
   return (
     <div className="dashboard">
@@ -34,7 +30,7 @@ const Dashboard = () => {
         </div>
         <div className="summary-card">
           <h3>Total Spending</h3>
-          <p>${summary.totalSpending}</p>
+          <p>${summary.totalSpending.toFixed(2)}</p>
         </div>
       </div>
 
@@ -56,7 +52,6 @@ const Dashboard = () => {
           ))}
         </ul>
       </div>
-
     </div>
   );
 };
