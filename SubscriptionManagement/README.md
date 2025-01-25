@@ -1,4 +1,5 @@
-Predictive Subscription Management Tool
+**Predictive Subscription Management Tool**
+
 An AI-powered platform to help users track, manage, and optimize their recurring expenses, such as subscriptions, by providing actionable insights and recommendations.
 
 Features
