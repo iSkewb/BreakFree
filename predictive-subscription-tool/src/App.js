@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard';
 import Help from './pages/Help';
 import ContactUs from './pages/ContactUs';
 import NavBar from './components/NavBar';
+import Profile from './pages/Profile';
 
 const App = () => {
   return (
@@ -17,7 +18,9 @@ const App = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/help" element={<Help />} />
           <Route path="/contact-us" element={<ContactUs />} />
-          <Route path="/" element={<AddSubscription />} />
+          <Route path="/profile" element={<Profile />} />
+          {/* <Route path="/" element={<AddSubscription />} /> */}
+
         </Routes>
       </Router>
     </SubscriptionProvider>
