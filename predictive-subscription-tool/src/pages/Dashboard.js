@@ -33,13 +33,6 @@ const Dashboard = () => {
           <p>${summary.totalSpending.toFixed(2)}</p>
         </div>
       </div>
-
-      {/* Subscription List Section */}
-      <div className="dashboard-subscription-list">
-        <h3>Subscriptions</h3>
-        <SubscriptionList subscriptions={subscriptions} />
-      </div>
-
       {/* Recent Activity Section */}
       <div className="dashboard-recent-activities">
         <h3>Recent Activities</h3>
