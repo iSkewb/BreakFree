@@ -66,7 +66,7 @@ const Dashboard = () => {
 
       {/* Category Pie Chart Section */}
       <div className="dashboard-category-pie-chart">
-        <h3>Spending by Category</h3>
+        <h3>Monthly Spending by Category</h3>
         <CategoryPieChart data={getCategoryData()} /> {/* Render the CategoryPieChart component */}
       </div>
 
