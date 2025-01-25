@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSubscriptions } from '../context/SubscriptionContext';
 import './Dashboard.css';
+import CategoryPieChart from '../components/CategoryPieChart';
 
 const Dashboard = () => {
   const { subscriptions } = useSubscriptions();
@@ -48,6 +49,7 @@ const Dashboard = () => {
           ))}
         </ul>
       </div>
+
     </div>
   );
 };
