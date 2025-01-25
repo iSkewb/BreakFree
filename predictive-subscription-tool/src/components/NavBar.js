@@ -9,8 +9,8 @@ const NavBar = () => {
     // </div>
     <div class="navbar">
         <ul>
-            <li><a href="/dashboard">Home</a></li>
-            <li><a href="/add-subscription">Portfolio</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/add-subscription">Subscriptions</a></li>
             {/* <li><a href="qualifications.html">Qualifications</a></li>
             <li><a href="service.html">Service</a></li>
             <li><a href="genai.html">General AI Page</a></li> */}
