@@ -9,8 +9,8 @@ const Help = () => {
       <section className="help-section">
         <h3>Getting Started</h3>
         <p>Welcome to the Predictive Subscription Tool! Here’s how to get started:</p>
-          <p> -Sign up for an account</p>
-          <p> -Link your subscriptions</p>
+          <p> -Edit your account</p>
+          <p> -Add your subscriptions</p>
           <p> -Monitor and manage your recurring expenses</p>
       </section>
       
@@ -18,7 +18,7 @@ const Help = () => {
         <h3>Frequently Asked Questions</h3>
         <div className="faq-item">
           <h4>How do I link my subscriptions?</h4>
-          <p>To link your subscriptions, simply go to the "Settings" page and connect your payment methods.</p>
+          <p>To link your subscriptions, just swiftly drop them in on the Subscriptions page.</p>
         </div>
         <div className="faq-item">
           <h4>Can I cancel subscriptions directly through this tool?</h4>
