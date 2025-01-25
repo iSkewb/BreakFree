@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
+import { useSubscriptions } from '../context/SubscriptionContext';
 import './Dashboard.css';
 
 const Dashboard = () => {
+  const { subscriptions } = useSubscriptions();
+
+  const totalCost = subscriptions.reduce((sum, sub) => sum + sub.cost, 0);
+
   // State for holding summary data or metrics
   const [summary, setSummary] = useState({
-    totalSubscriptions: 0,
-    totalSpending: 0,
+    totalSubscriptions: subscriptions.length,
+    totalSpending: totalCost,
   });
 
   // Placeholder data for recent activities
