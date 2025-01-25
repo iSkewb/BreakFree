@@ -1,4 +1,5 @@
 .nav-bar {
+  position: fixed;
   background-color: #004878;
   padding: 16px;
   display: flex;
