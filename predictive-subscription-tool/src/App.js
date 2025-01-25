@@ -17,7 +17,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Predictive Subscription Tool</h1>
+      <h1>Super Cool Predictive Subscription Tool</h1>
       <AddSubscription onAdd={handleAddSubscription} />
       <SubscriptionList
         subscriptions={subscriptions}
