@@ -1,67 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSubscriptions } from '../context/SubscriptionContext';
 import SubscriptionList from './SubscriptionList'; // Import SubscriptionList
 import './AddSubscription.css'; // Import AddSubscription.css
 
 const AddSubscription = () => {
-  const { addSubscription } = useSubscriptions();
-  const [subscriptions, setSubscriptions] = useState([]);
+  const { subscriptions, addSubscription, removeSubscription } = useSubscriptions();
   const [name, setName] = useState('');
   const [cost, setCost] = useState('');
   const [frequency, setFrequency] = useState('monthly');
   const [category, setCategory] = useState('entertainment');
-  const [newSub, setNewSub] = useState({ name: '', cost: '' });
 
-  // Load subscriptions from localStorage when the component mounts
-  useEffect(() => {
-    const storedSubscriptions = localStorage.getItem('subscriptions');
-    if (storedSubscriptions) {
-      setSubscriptions(JSON.parse(storedSubscriptions));
-    }
-  }, []);
-
-  // Save subscriptions to localStorage whenever they change
-  useEffect(() => {
-    localStorage.setItem('subscriptions', JSON.stringify(subscriptions));
-  }, [subscriptions]);
-
-  const handleAddSubscription = (subscription) => {
-    setSubscriptions([...subscriptions, subscription]);
-  };
-
-  const handleDeleteSubscription = (index) => {
-    const updatedSubscriptions = subscriptions.filter((_, i) => i !== index);
-    setSubscriptions(updatedSubscriptions);
-  };
-
+  // Handle adding a new subscription
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newSubscription = { name, cost: parseFloat(cost), frequency, category };
-    handleAddSubscription(newSubscription);
+    const newSubscription = {
+      id: Date.now(), // Generate a unique ID
+      name,
+      cost: parseFloat(cost),
+      frequency,
+      category,
+    };
+    addSubscription(newSubscription); // Update subscriptions via context
     setName('');
     setCost('');
+    setFrequency('monthly');
     setCategory('entertainment');
-  };
-
-  const handleNewSubSubmit = () => {
-    addSubscription({ ...newSub, id: Date.now(), cost: parseFloat(newSub.cost) });
-    setNewSub({ name: '', cost: '' });
-  };
-
-  const getCategoryData = () => {
-    const categoryData = subscriptions.reduce((acc, subscription) => {
-      const { category, cost } = subscription;
-      if (!acc[category]) {
-        acc[category] = 0;
-      }
-      acc[category] += cost;
-      return acc;
-    }, {});
-
-    return Object.keys(categoryData).map((key) => ({
-      name: key,
-      value: categoryData[key],
-    }));
   };
 
   return (
@@ -75,10 +38,7 @@ const AddSubscription = () => {
               <input
                 type="text"
                 value={name}
-                onChange={(e) => {
-                  setName(e.target.value);
-                  setNewSub({ ...newSub, name: e.target.value });
-                }}
+                onChange={(e) => setName(e.target.value)}
                 required
               />
             </label>
@@ -87,10 +47,7 @@ const AddSubscription = () => {
               <input
                 type="number"
                 value={cost}
-                onChange={(e) => {
-                  setCost(e.target.value);
-                  setNewSub({ ...newSub, cost: e.target.value });
-                }}
+                onChange={(e) => setCost(e.target.value)}
                 required
               />
             </label>
@@ -115,7 +72,11 @@ const AddSubscription = () => {
           </form>
         </div>
         <div className="subscription-list-container">
-          <SubscriptionList subscriptions={subscriptions} onDelete={handleDeleteSubscription} />
+          <h3>Your Subscriptions</h3>
+          <SubscriptionList
+            subscriptions={subscriptions}
+            onDelete={(id) => removeSubscription(id)} // Handle delete via context
+          />
         </div>
       </div>
     </div>
