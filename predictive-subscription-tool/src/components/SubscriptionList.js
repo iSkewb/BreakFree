@@ -16,8 +16,7 @@ const SubscriptionList = ({ subscriptions, onDelete }) => {
         {sortedSubscriptions.map((sub, index) => (
           <li key={sub.id || index}>
             <span>
-              <strong>{sub.name}</strong>: ${sub.cost} per {sub.frequency}
-            </span>
+              <strong>{sub.name}</strong> </span> ${sub.cost} {sub.frequency}
             <button onClick={() => onDelete(index)}>Delete</button>
           </li>
         ))}
