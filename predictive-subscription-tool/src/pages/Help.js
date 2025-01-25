@@ -9,11 +9,9 @@ const Help = () => {
       <section className="help-section">
         <h3>Getting Started</h3>
         <p>Welcome to the Predictive Subscription Tool! Here’s how to get started:</p>
-        <ul>
-          <li>Sign up for an account</li>
-          <li>Link your subscriptions</li>
-          <li>Monitor and manage your recurring expenses</li>
-        </ul>
+          <p> -Sign up for an account</p>
+          <p> -Link your subscriptions</p>
+          <p> -Monitor and manage your recurring expenses</p>
       </section>
       
       <section className="help-section">
@@ -35,11 +33,9 @@ const Help = () => {
       <section className="help-section">
         <h3>Contact Support</h3>
         <p>If you need further assistance, feel free to reach out to our support team:</p>
-        <ul>
-          <li>Email: support@predictivesubscription.com</li>
-          <li>Phone: 1-800-123-4567</li>
-          <li>Live Chat: Available on the "Contact Us" page</li>
-        </ul>
+        <p><span>Email:</span> support@predictivesubscription.com</p>
+        <p><span>Phone:</span> 1-800-123-4567</p>
+        <p><span>Live Chat:</span> Available on the "Contact Us" page</p>
       </section>
     </div>
   );
