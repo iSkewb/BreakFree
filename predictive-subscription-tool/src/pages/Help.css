@@ -1,0 +1,45 @@
+/* General styling for the Help page */
+.help-container {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .help-section {
+    margin-bottom: 30px;
+  }
+  
+  .help-section h3 {
+    color: #4CAF50;
+    font-size: 1.5em;
+  }
+  
+  .help-section p {
+    font-size: 1.1em;
+    line-height: 1.5;
+  }
+  
+  .faq-item {
+    margin-bottom: 15px;
+  }
+  
+  .faq-item h4 {
+    color: #333;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  ul li {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+  }
+  

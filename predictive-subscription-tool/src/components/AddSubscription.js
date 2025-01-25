@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import NavBar from './NavBar';
 import SubscriptionList from './SubscriptionList'; // Import SubscriptionList
+import './AddSubscription.css'; // Import AddSubscription.css
 
 const AddSubscription = ({ onAdd, subscriptions, onDelete }) => {
   const [name, setName] = useState('');
@@ -33,43 +34,39 @@ const AddSubscription = ({ onAdd, subscriptions, onDelete }) => {
     }));
   };
 
-  return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <h2>Add Subscription</h2>
-        <label>
-          Subscription Name:
-          <input value={name} onChange={(e) => setName(e.target.value)} required />
-        </label>
-        <label>
-          Cost ($):
-          <input
-            type="number"
-            value={cost}
-            onChange={(e) => setCost(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Frequency:
-          <select value={frequency} onChange={(e) => setFrequency(e.target.value)}>
-            <option value="monthly">Monthly</option>
-            <option value="yearly">Yearly</option>
-          </select>
-        </label>
-        <label>
-          Category:
-          <select value={category} onChange={(e) => setCategory(e.target.value)}>
-            <option value="entertainment">Entertainment</option>
-            <option value="utilities">Utilities</option>
-            <option value="education">Education</option>
-            <option value="health">Health</option>
-            <option value="other">Other</option>
-          </select>
-        </label>
-        <button type="submit">Add</button>
-      </form>
-      <SubscriptionList subscriptions={subscriptions} onDelete={onDelete} /> {/* Display current subscriptions */}
+ // ...existing code...
+return (
+  <div>
+    <form onSubmit={handleSubmit}>
+      <h2>Add Subscription</h2>
+      <label>
+        Subscription Name:
+        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+      </label>
+      <label>
+        Cost:
+        <input type="number" value={cost} onChange={(e) => setCost(e.target.value)} />
+      </label>
+      <label>
+        Frequency:
+        <select value={frequency} onChange={(e) => setFrequency(e.target.value)}>
+          <option value="monthly">Monthly</option>
+          <option value="yearly">Yearly</option>
+        </select>
+      </label>
+      <label>
+        Category:
+        <select value={category} onChange={(e) => setCategory(e.target.value)}>
+          <option value="entertainment">Entertainment</option>
+          <option value="utilities">Utilities</option>
+          <option value="education">Education</option>
+        </select>
+      </label>
+      <button type="submit">Add</button>
+    </form>
+      <div className="subscription-list">
+        <SubscriptionList subscriptions={subscriptions} onDelete={onDelete} />
+      </div>
     </div>
   );
 };
