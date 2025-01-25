@@ -1,32 +1,17 @@
 import React, { useState } from 'react';
-import NavBar from './NavBar'; // Import the NavBar component
-import CategoryPieChart from './CategoryPieChart'; // Import the CategoryPieChart component
+import NavBar from './NavBar';
+import SubscriptionList from './SubscriptionList'; // Import SubscriptionList
 
-const AddSubscription = () => {
+const AddSubscription = ({ onAdd, subscriptions, onDelete }) => {
   const [name, setName] = useState('');
   const [cost, setCost] = useState('');
   const [frequency, setFrequency] = useState('monthly');
   const [category, setCategory] = useState('entertainment');
-  const [subscriptions, setSubscriptions] = useState([]);
-
-  const handleAddSubscription = (subscription) => {
-    setSubscriptions([...subscriptions, subscription]);
-  };
-
-  const handleDeleteSubscription = (index) => {
-    const updatedSubscriptions = subscriptions.filter((_, i) => i !== index);
-    setSubscriptions(updatedSubscriptions);
-  };
-/////////////////////////////////////////////////////////////
-  const onAdd = (subscription) => {
-    console.log('Subscription added:', subscription);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const newSubscription = { name, cost: parseFloat(cost), frequency, category };
     onAdd(newSubscription);
-    handleAddSubscription(newSubscription);
     setName('');
     setCost('');
     setCategory('entertainment');
@@ -43,7 +28,7 @@ const AddSubscription = () => {
     }, {});
 
     return Object.keys(categoryData).map((key) => ({
-      name: key,  
+      name: key,
       value: categoryData[key],
     }));
   };
@@ -84,6 +69,7 @@ const AddSubscription = () => {
         </label>
         <button type="submit">Add</button>
       </form>
+      <SubscriptionList subscriptions={subscriptions} onDelete={onDelete} /> {/* Display current subscriptions */}
     </div>
   );
 };
