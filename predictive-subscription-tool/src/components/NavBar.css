@@ -1,8 +1,9 @@
 .nav-bar {
-    background-color: red;
+    background-color: #004878;
     padding: 10px;
     display: flex;
     justify-content: space-between;
+    /* width: 100%; */
   }
   
   .nav-bar button {
