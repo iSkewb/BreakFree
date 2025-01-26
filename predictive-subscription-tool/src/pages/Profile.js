@@ -1,27 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Profile.css';
 
 const Profile = () => {
-  const userInfo = {
-    name: "Jane Doe",
-    email: "jane.doe@example.com",
-    memberSince: "March 2023",
-    subscriptionPlan: "Premium",
-    recentActivity: ["Updated subscription to Spotify", "Added Netflix subscription", "Viewed analytics dashboard"],
+  const [formData, setFormData] = useState(Array(5).fill(''));
+
+  const handleChange = (index, value) => {
+    const newFormData = [...formData];
+    newFormData[index] = value;
+    setFormData(newFormData);
+  };
+
+  const handleSave = () => {
+    const dataToSave = formData.filter(value => value !== '');
+    localStorage.setItem('profileFormData', JSON.stringify(dataToSave));
+    alert('Data saved successfully!');
   };
 
   return (
     <div className="profile-container">
-      <div className="profile-card">
-        <h1 className="profile-title">User Profile</h1>
-        <div className="profile-details">
-          <p><strong>Name:</strong> {userInfo.name}</p>
-          <p><strong>Email:</strong> {userInfo.email}</p>
-          <p><strong>Member Since:</strong> {userInfo.memberSince}</p>
-          <p><strong>Subscription Plan:</strong> {userInfo.subscriptionPlan}</p>
-        </div>
-        <button className="edit-button">Edit Profile</button>
+      <div className="form-wrapper">
+        {formData.map((value, index) => (
+          <form key={index} className="dropdown-form">
+            <label htmlFor={`dropdown-${index}`}>Select Option:</label>
+            <select
+              id={`dropdown-${index}`}
+              value={value}
+              onChange={(e) => handleChange(index, e.target.value)}
+            >
+              <option value="">Select...</option>
+              <option value="Option 1">Option 1</option>
+              <option value="Option 2">Option 2</option>
+              <option value="Option 3">Option 3</option>
+              <option value="Option 4">Option 4</option>
+            </select>
+          </form>
+        ))}
       </div>
+      <button className="save-button" onClick={handleSave}>Save Changes</button>
     </div>
   );
 };
