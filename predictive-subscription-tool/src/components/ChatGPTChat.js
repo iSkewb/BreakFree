@@ -9,10 +9,13 @@ const ChatGPTChat = () => {
 
   // Fetch data from localStorage when the component mounts
   useEffect(() => {
-    const savedData = localStorage.getItem('profileFormData');  // Read from localStorage
-    if (savedData) {
-      setLocalData(JSON.parse(savedData));  // Parse and set to state
-    }
+    const savedProfileData = localStorage.getItem('profileFormData');  // Read profile data from localStorage
+    const savedSubscriptionData = localStorage.getItem('subscriptionData');  // Read subscription data from localStorage
+
+    const profileData = savedProfileData ? JSON.parse(savedProfileData) : {};
+    const subscriptionData = savedSubscriptionData ? JSON.parse(savedSubscriptionData) : {};
+
+    setLocalData({ ...profileData, subscriptions: subscriptionData });  // Combine and set to state
   }, []);
 
   // Handler for analyzing data and requesting advice
@@ -25,7 +28,7 @@ const ChatGPTChat = () => {
     setLoading(true);
     try {
       // Prepare the prompt with the user's data (and other context as needed)
-      const prompt = `You are a financial advisor. Based on the following subscription data, provide detailed financial advice and suggestions for optimizing expenses. Consider the user's spending habits, potential savings, and any other relevant financial strategies. Here is the user's subscription data: ${JSON.stringify(localData)}. Keep it to a few sentences`;
+      const prompt = `You are a financial advisor. Based on the following subscription data, provide detailed financial advice and suggestions for optimizing expenses. Consider the user's spending habits, potential savings, and the companies they are subscribed to and any relevant information related. Here is the user's subscription data: ${JSON.stringify(localData)}. Keep it to a few sentences`;
 
       // Send a request to OpenAI GPT API
       const response = await axios.post(

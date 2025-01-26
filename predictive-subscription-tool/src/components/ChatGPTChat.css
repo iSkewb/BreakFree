@@ -10,3 +10,9 @@
     align-items: center; /* Center children horizontally */
     text-align: center; /* Center text */
 }
+.advice-text {
+    color: #333; /* Dark grey text color */
+    font-size: 1.2rem; /* Slightly larger font size */
+    margin-top: 1rem; /* Space above the text */
+    line-height: 1.5; /* Line height for readability */
+}
