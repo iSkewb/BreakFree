@@ -29,16 +29,19 @@ const ChatGPTChat = () => {
 
       // Send a request to OpenAI GPT API
       const response = await axios.post(
-        'https://api.openai.com/v1/completions',
+        'https://api.openai.com/v1/chat/completions',
         {
-          model: 'gpt-4o-mini-2024-07-18',  // Or another model, such as 'gpt-3.5-turbo'
-          prompt: prompt,
-          max_tokens: 200,  // Limit the response size
-          temperature: 0.7,  // Controls the randomness of the output
+          model: 'gpt-4o-mini-2024-07-18',
+          messages: [
+            { role: 'system', content: 'You are a sophisticated financial advisor.' },
+            { role: 'user', content: prompt }
+          ],
+          max_tokens: 200,
+          temperature: 0.7,
         },
         {
           headers: {
-            'Authorization': `Bearer API KEY`,
+            'Authorization': `Bearer API KEY HERE`,  // Add your OpenAI API key here
             'Content-Type': 'application/json',
           }
         }
