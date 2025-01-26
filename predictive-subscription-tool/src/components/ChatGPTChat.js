@@ -48,7 +48,7 @@ const ChatGPTChat = () => {
       );
 
       // Set the advice based on the API response
-      setAdvice(response.data.choices[0].text || 'No advice received.');
+      setAdvice(response.data.choices[0].message.content || 'No advice received.');
     } catch (error) {
       console.error('Error fetching advice:', error);
       setAdvice('There was an error analyzing your data. Please try again.');
