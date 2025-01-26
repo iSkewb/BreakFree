@@ -45,7 +45,12 @@ const Dashboard = () => {
   // Function to calculate the next renewal date
   const calculateNextRenewalDate = (subscription) => {
     const currentDate = new Date();
-    let nextRenewalDate = new Date(subscription.date);
+    let nextRenewalDate;
+    if (subscription.date) {
+      nextRenewalDate = new Date(subscription.date);
+    } else {
+      nextRenewalDate = new Date();
+    }
 
     if (isNaN(nextRenewalDate)) {
       // Handle invalid startDate
@@ -123,7 +128,7 @@ const Dashboard = () => {
           {nextRenewals.map((renewal) => (
             <li key={renewal.id}>
               <span>{renewal.name}</span>
-              <span className="renewal-date">{renewal.nextRenewalDate}</span>
+              <span className="activity-date">{renewal.nextRenewalDate}</span>
             </li>
           ))}
         </ul>

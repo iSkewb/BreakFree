@@ -17,7 +17,6 @@ const AddSubscription = () => {
 
     const formattedDate = date || new Date().toISOString().split('T')[0]; // Format as YYYY-MM-DD
 
-
     const newSubscription = {
       id: Date.now(), // Generate a unique ID
       name,
