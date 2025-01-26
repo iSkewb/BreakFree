@@ -128,7 +128,7 @@ const Dashboard = () => {
           {nextRenewals.map((renewal) => (
             <li key={renewal.id}>
               <span>{renewal.name}</span>
-              <span className="renewal-date">{renewal.nextRenewalDate}</span>
+              <span className="activity-date">{renewal.nextRenewalDate}</span>
             </li>
           ))}
         </ul>
