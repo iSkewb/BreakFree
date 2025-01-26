@@ -45,7 +45,12 @@ const Dashboard = () => {
   // Function to calculate the next renewal date
   const calculateNextRenewalDate = (subscription) => {
     const currentDate = new Date();
-    let nextRenewalDate = new Date(subscription.startDate);
+    let nextRenewalDate = new Date(subscription.date);
+
+    if (isNaN(nextRenewalDate)) {
+      // Handle invalid startDate
+      return 'Invalid Date';
+    }
 
     while (nextRenewalDate <= currentDate) {
       if (subscription.frequency === 'monthly') {
@@ -53,11 +58,6 @@ const Dashboard = () => {
       } else if (subscription.frequency === 'yearly') {
         nextRenewalDate.setFullYear(nextRenewalDate.getFullYear() + 1);
       }
-    }
-
-    if (isNaN(nextRenewalDate)) {
-      // Handle invalid startDate
-      return 'Invalid date';
     }
 
     return nextRenewalDate.toISOString().split('T')[0];
@@ -117,7 +117,7 @@ const Dashboard = () => {
       </div>
 
       {/* Next Renewal Dates Section */}
-      <div className="dashboard-recent-activities"> {/* I MADE THIS CLASS NAME THE SAME AS THE PREVIOUS FOR THE SAKE OF STYLING SIMPLICITY */}
+      <div className="dashboard-recent-activities"> {/* Fix the class name */}
         <h3>Next Renewal Dates</h3>
         <ul>
           {nextRenewals.map((renewal) => (
