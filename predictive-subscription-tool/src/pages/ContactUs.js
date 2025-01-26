@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './ContactUs.css';
 
 const ContactUs = () => {
-  // State to hold form input values
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -27,8 +26,7 @@ const ContactUs = () => {
   };
 
   return (
-    <div>
-      <br></br>
+    <div className="contact-us-container">
       <h2>Contact Us</h2>
       <form onSubmit={handleSubmit}>
         <div>
@@ -63,7 +61,7 @@ const ContactUs = () => {
             required
           ></textarea>
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit">Send</button>
       </form>
     </div>
   );
