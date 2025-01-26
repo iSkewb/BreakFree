@@ -31,6 +31,7 @@ form label {
 form input,
 form select {
   margin-top: 5px;
+  margin-left: 5px;
   padding: 5px;
   font-size: 16px;
 }
@@ -47,4 +48,10 @@ form button {
 
 form button:hover {
   background-color: #003366;
+}
+
+.required {
+  color: red;
+  margin-left: 0px; /* Adjust spacing as needed */
+  font-size: 1.1rem; /* Ensure it's the right size for your labels */
 }
