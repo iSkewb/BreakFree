@@ -54,12 +54,12 @@ const ChatGPTChat = () => {
   };
 
   return (
-    <div style={{ padding: '2rem' }}>
+    <div className="chat-container">
       <h1>Financial Advice Chat</h1>
       <button onClick={analyzeData} disabled={loading}>
         {loading ? 'Analyzing...' : 'Get Financial Advice'}
       </button>
-      {advice && <p>{advice}</p>}
+      {advice && <p className="advice-text">{advice}</p>}
     </div>
   );
 };
