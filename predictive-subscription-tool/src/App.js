@@ -7,6 +7,8 @@ import Help from './pages/Help';
 import ContactUs from './pages/ContactUs';
 import NavBar from './components/NavBar';
 import Profile from './pages/Profile';
+import ChatGPTChat from './components/ChatGPTChat'; // Import the ChatGPTChat component
+
 
 const App = () => {
   return (
@@ -19,6 +21,7 @@ const App = () => {
           <Route path="/help" element={<Help />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/chat" element={<ChatGPTChat />} />
           {/* <Route path="/" element={<AddSubscription />} /> */}
 
         </Routes>
