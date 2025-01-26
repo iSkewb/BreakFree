@@ -34,7 +34,7 @@ const AddSubscription = () => {
           <form onSubmit={handleSubmit}>
             <h2>Add Subscription</h2>
             <label>
-              Subscription Name:
+              Subscription Name: <span className="required">*</span>
               <input
                 type="text"
                 value={name}
@@ -43,7 +43,7 @@ const AddSubscription = () => {
               />
             </label>
             <label>
-              Cost ($):
+              Cost ($): <span className="required">*</span>
               <input
                 type="number"
                 value={cost}
@@ -52,14 +52,14 @@ const AddSubscription = () => {
               />
             </label>
             <label>
-              Frequency:
+              Frequency: <span className="required">*</span>
               <select value={frequency} onChange={(e) => setFrequency(e.target.value)}>
                 <option value="monthly">Monthly</option>
                 <option value="yearly">Yearly</option>
               </select>
             </label>
             <label>
-              Category:
+              Category: <span className="required">*</span>
               <select value={category} onChange={(e) => setCategory(e.target.value)}>
                 <option value="entertainment">Entertainment</option>
                 <option value="utilities">Utilities</option>

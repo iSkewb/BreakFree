@@ -7,6 +7,7 @@ const Dashboard = () => {
   const { subscriptions } = useSubscriptions();
   const [summary, setSummary] = useState({ totalSubscriptions: 0, totalSpending: 0 });
   const [recentActivities, setRecentActivities] = useState([]);
+  const [nextRenewals, setNextRenewals] = useState([]);
 
   useEffect(() => {
     const totalSubscriptions = subscriptions.length;
@@ -28,7 +29,39 @@ const Dashboard = () => {
       date: new Date().toISOString().split('T')[0],
     }));
     setRecentActivities(newActivities);
+
+    // Calculate next renewal dates
+    const newNextRenewals = subscriptions.map((sub) => {
+      const nextRenewalDate = calculateNextRenewalDate(sub);
+      return {
+        id: sub.id,
+        name: sub.name,
+        nextRenewalDate,
+      };
+    });
+    setNextRenewals(newNextRenewals);
   }, [subscriptions]);
+
+  // Function to calculate the next renewal date
+  const calculateNextRenewalDate = (subscription) => {
+    const currentDate = new Date();
+    let nextRenewalDate = new Date(subscription.startDate);
+
+    while (nextRenewalDate <= currentDate) {
+      if (subscription.frequency === 'monthly') {
+        nextRenewalDate.setMonth(nextRenewalDate.getMonth() + 1);
+      } else if (subscription.frequency === 'yearly') {
+        nextRenewalDate.setFullYear(nextRenewalDate.getFullYear() + 1);
+      }
+    }
+
+    if (isNaN(nextRenewalDate)) {
+      // Handle invalid startDate
+      return 'Invalid date';
+    }
+
+    return nextRenewalDate.toISOString().split('T')[0];
+  };
 
   // Prepare the data for the pie chart
   const getCategoryData = () => {
@@ -78,6 +111,19 @@ const Dashboard = () => {
             <li key={activity.id}>
               <span>{activity.action}</span>
               <span className="activity-date">{activity.date}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Next Renewal Dates Section */}
+      <div className="dashboard-recent-activities"> {/* I MADE THIS CLASS NAME THE SAME AS THE PREVIOUS FOR THE SAKE OF STYLING SIMPLICITY */}
+        <h3>Next Renewal Dates</h3>
+        <ul>
+          {nextRenewals.map((renewal) => (
+            <li key={renewal.id}>
+              <span>{renewal.name}</span>
+              <span className="renewal-date">{renewal.nextRenewalDate}</span>
             </li>
           ))}
         </ul>
