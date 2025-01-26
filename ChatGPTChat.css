@@ -1,0 +1,111 @@
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    background-color: #f5f5f5;
+    font-family: 'Arial', sans-serif;
+    padding: 2rem;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+}
+
+.chat-header {
+    background-color: #0078d4;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    width: 100%; /* Make it fluid */
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    width: 100%; /* Make it fluid */
+}
+
+.message {
+    display: flex;
+    margin-bottom: 10px;
+    width: 100%; /* Make it fluid */
+}
+
+.message-content {
+    max-width: 60%;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1em;
+}
+
+.chat-input {
+    display: flex;
+    padding: 10px;
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+    width: 100%; /* Make it fluid */
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.chat-input button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: #0078d4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.chat-input button:hover {
+    background-color: #005a9e;
+}
+
+.financial-advice-chat {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    text-align: center; /* Center text */
+}
+
+.financial-advice-chat h1 {
+    font-size: 2em;
+    margin-bottom: 1rem;
+}
+
+.financial-advice-chat button {
+    padding: 10px 20px;
+    background-color: #0078d4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.financial-advice-chat button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.financial-advice-chat button:hover:enabled {
+    background-color: #005a9e;
+}
+
+.financial-advice-chat p {
+    margin-top: 1rem;
+    font-size: 1.2em;
+    color: #333;
+}
