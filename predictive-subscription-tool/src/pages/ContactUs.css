@@ -49,12 +49,18 @@ form {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    max-width: 35%; /* Set maximum width to 35% */
+    margin: 0 auto; /* Center the form */
+    padding: 20px; /* Add padding inside the form */
+    border: 2px solid #bbb; /* Add a slightly darker gray border */
+    border-radius: 10px; /* Add rounded corners */
+    background-color: #f9f9f9; /* Optional: Add a background color */
 }
 
 /* Input and textarea styling */
 input, textarea {
     padding: 12px;
-    border: 1px solid #ddd;
+    border: 1px solid #bbb; /* Slightly darker gray border */
     border-radius: 5px;
     font-size: 1.1em;
     width: 100%;
@@ -68,22 +74,20 @@ input:focus, textarea:focus {
 
 /* Button styling */
 button {
-    margin-top: 25px;
-    padding: 12px 25px;
-    background-color: #007BFF;
-    color: white;
+    padding: 12px;
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
     font-size: 1.1em;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #333;
+    color: #fff;
+    transition: background-color 0.3s ease;
+    max-width: 35%; /* Set maximum width to 35% */
+    margin: 0 auto; /* Center the button */
 }
 
 button:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    background-color: #555;
 }
 
 button:active {
