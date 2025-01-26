@@ -27,12 +27,9 @@ html, body {
     justify-content: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative; /* Ensures independent positioning */
+    margin: 50px auto 0 auto; /* Shifts the container 50px down and centers it */
 }
 
-.contact-us-container:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-}
 
 /* Heading */
 h2 {
