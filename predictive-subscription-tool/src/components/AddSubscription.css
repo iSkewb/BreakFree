@@ -55,3 +55,24 @@ form button:hover {
   margin-left: 0px; /* Adjust spacing as needed */
   font-size: 1.1rem; /* Ensure it's the right size for your labels */
 }
+
+.dropdown-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px; /* Space between dropdown and the red dot */
+}
+
+.dropdown-label .required {
+  margin-left: 0; /* Prevent unnecessary margin for dropdown labels */
+}
+
+label:not(.dropdown-label) .required {
+  margin-left: 4px; /* Maintain margin for non-dropdown labels */
+}
+
+input[type="text"][placeholder="MM/DD/YYYY"] {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}

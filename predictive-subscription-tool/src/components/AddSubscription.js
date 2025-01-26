@@ -7,22 +7,29 @@ const AddSubscription = () => {
   const { subscriptions, addSubscription, removeSubscription } = useSubscriptions();
   const [name, setName] = useState('');
   const [cost, setCost] = useState('');
+  const [date, setDate] = useState('');
   const [frequency, setFrequency] = useState('monthly');
   const [category, setCategory] = useState('entertainment');
 
   // Handle adding a new subscription
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const formattedDate = date || new Date().toISOString().split('T')[0]; // Format as YYYY-MM-DD
+
+
     const newSubscription = {
       id: Date.now(), // Generate a unique ID
       name,
       cost: parseFloat(cost),
+      date: formattedDate, // Use the selected date or set it to null
       frequency,
       category,
     };
     addSubscription(newSubscription); // Update subscriptions via context
     setName('');
     setCost('');
+    setDate('');
     setFrequency('monthly');
     setCategory('entertainment');
   };
@@ -52,21 +59,35 @@ const AddSubscription = () => {
               />
             </label>
             <label>
-              Frequency: <span className="required">*</span>
-              <select value={frequency} onChange={(e) => setFrequency(e.target.value)}>
-                <option value="monthly">Monthly</option>
-                <option value="yearly">Yearly</option>
-              </select>
+              Date:
+              <input
+                type="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+              />
             </label>
-            <label>
-              Category: <span className="required">*</span>
-              <select value={category} onChange={(e) => setCategory(e.target.value)}>
-                <option value="entertainment">Entertainment</option>
-                <option value="utilities">Utilities</option>
-                <option value="education">Education</option>
-                <option value="health">Health</option>
-                <option value="other">Other</option>
-              </select>
+            <label className="dropdown-label">
+              Frequency:
+              <div className="dropdown-wrapper">
+                <select value={frequency} onChange={(e) => setFrequency(e.target.value)}>
+                  <option value="monthly">Monthly</option>
+                  <option value="yearly">Yearly</option>
+                </select>
+                <span className="required">*</span>
+              </div>
+            </label>
+            <label className="dropdown-label">
+              Category:
+              <div className="dropdown-wrapper">
+                <select value={category} onChange={(e) => setCategory(e.target.value)}>
+                  <option value="entertainment">Entertainment</option>
+                  <option value="utilities">Utilities</option>
+                  <option value="education">Education</option>
+                  <option value="health">Health</option>
+                  <option value="other">Other</option>
+                </select>
+                <span className="required">*</span>
+              </div>
             </label>
             <button type="submit">Add</button>
           </form>
