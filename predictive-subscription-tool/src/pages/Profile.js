@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Profile.css';
+import '../styling/Pages2.css';
 
 const Profile = () => {
   const dropdownData = [

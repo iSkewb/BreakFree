@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSubscriptions } from '../context/SubscriptionContext';
-import SubscriptionList from './SubscriptionList'; // Import SubscriptionList
-import './AddSubscription.css'; // Import AddSubscription.css
+import SubscriptionList from '../components/SubscriptionList'; // Import SubscriptionList
+import '../styling/Pages2.css'; // Import AddSubscription.css
 
 const AddSubscription = () => {
   const { subscriptions, addSubscription, removeSubscription } = useSubscriptions();

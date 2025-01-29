@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './ChatGPTChat.css';
+import '../styling/Pages2.css';
 
 const ChatGPTChat = () => {
   const [localData, setLocalData] = useState({});  // State for storing user data

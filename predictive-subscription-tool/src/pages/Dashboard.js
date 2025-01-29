@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSubscriptions } from '../context/SubscriptionContext';
 import CategoryPieChart from '../components/CategoryPieChart'; // Import the CategoryPieChart component
-import './Dashboard.css';
+import '../styling/Dashboard.css';
 
 const Dashboard = () => {
   const { subscriptions } = useSubscriptions();

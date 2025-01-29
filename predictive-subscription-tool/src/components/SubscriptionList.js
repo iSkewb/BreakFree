@@ -1,5 +1,5 @@
 import React from 'react';
-import './SubscriptionList.css'; // Import the CSS file
+import '../styling/Pages2.css'; // Import the CSS file
 
 const SubscriptionList = ({ subscriptions, onDelete }) => {
   // Helper function to calculate monthly equivalent cost

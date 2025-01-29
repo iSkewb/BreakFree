@@ -1,6 +1,6 @@
 import React from 'react';
 import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
-import './CategoryPieChart.css'; // Import the CSS file
+import '../styling/Pages2.css'; // Import the CSS file
 
 const CategoryPieChart = ({ data }) => {
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#FF6384'];

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { SubscriptionProvider } from './context/SubscriptionContext';
-import AddSubscription from './components/AddSubscription';
+import AddSubscription from './pages/AddSubscription';
 import Dashboard from './pages/Dashboard';
 import Help from './pages/Help';
 import ContactUs from './pages/ContactUs';

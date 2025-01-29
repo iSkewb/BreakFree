@@ -1,5 +1,5 @@
 import React from 'react';
-import './Help.css'; // Make sure to link to a CSS file for styling
+import '../styling/Pages2.css'; // Make sure to link to a CSS file for styling
 
 const Help = () => {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './NavBar.css'; // Import the CSS file
+import '../styling/Pages2.css'; // Import the CSS file
 import logo from '../images/1.png'; // Import the logo image
 
 const NavBar = () => {
