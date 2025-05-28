@@ -4,6 +4,8 @@
 
 The Subscription Management Tool is a React-based web application that helps users analyze and optimize their subscription expenses. By leveraging the OpenAI GPT API, the tool provides tailored financial advice based on the user's subscription data.
 
+**Devpost Project:** https://devpost.com/software/break-free-xu6oc0
+
 ## Features
 
 Local Data Handling: Automatically fetches subscription data from the browser's local storage.
