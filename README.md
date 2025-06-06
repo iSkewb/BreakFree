@@ -1,4 +1,4 @@
-# Subscription Management App
+# Break Free - Subscription Management App
 
 A personalized tool to help users understand and optimize their subscription spending.
 
