@@ -18,7 +18,12 @@ const Profile = () => {
   };
 
   const handleSave = () => {
-    const dataToSave = formData.filter(value => value !== '');
+    const dataToSave = dropdownData.reduce((acc, dropdown, index) => {
+      if (formData[index] !== '') {
+        acc[dropdown.title] = formData[index];
+      }
+      return acc;
+    }, {});
     localStorage.setItem('profileFormData', JSON.stringify(dataToSave));
     alert('Data saved successfully!');
   };

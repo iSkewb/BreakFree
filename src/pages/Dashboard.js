@@ -26,7 +26,7 @@ const Dashboard = () => {
     const newActivities = subscriptions.map((sub, index) => ({
       id: index + 1,
       action: `Added ${sub.name} subscription`,
-      date: new Date().toISOString().split('T')[0],
+      date: sub.date || new Date().toISOString().split('T')[0],
     }));
     setRecentActivities(newActivities);
 
@@ -122,7 +122,7 @@ const Dashboard = () => {
       </div>
 
       {/* Next Renewal Dates Section */}
-      <div className="dashboard-recent-activities"> {/* Fix the class name */}
+      <div className="dashboard-renewals">
         <h3>Next Renewal Dates</h3>
         <ul>
           {nextRenewals.map((renewal) => (

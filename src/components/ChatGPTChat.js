@@ -44,7 +44,7 @@ const ChatGPTChat = () => {
         },
         {
           headers: {
-            'Authorization': `Bearer API KEY HERE`,  // Add your OpenAI API key here
+            'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
             'Content-Type': 'application/json',
           }
         }

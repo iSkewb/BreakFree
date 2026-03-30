@@ -78,7 +78,8 @@
 }
 
 /* Activity + Renewals */
-.dashboard-recent-activities {
+.dashboard-recent-activities,
+.dashboard-renewals {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
@@ -86,18 +87,21 @@
   margin-bottom: 24px;
 }
 
-.dashboard-recent-activities h3 {
+.dashboard-recent-activities h3,
+.dashboard-renewals h3 {
   font-size: 1rem;
   font-weight: 600;
   color: var(--text);
   margin-bottom: 16px;
 }
 
-.dashboard-recent-activities ul {
+.dashboard-recent-activities ul,
+.dashboard-renewals ul {
   list-style: none;
 }
 
-.dashboard-recent-activities li {
+.dashboard-recent-activities li,
+.dashboard-renewals li {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -111,11 +115,13 @@
   transition: border-color 0.2s ease;
 }
 
-.dashboard-recent-activities li:hover {
+.dashboard-recent-activities li:hover,
+.dashboard-renewals li:hover {
   border-color: var(--border-light);
 }
 
-.dashboard-recent-activities li:last-child {
+.dashboard-recent-activities li:last-child,
+.dashboard-renewals li:last-child {
   margin-bottom: 0;
 }
 

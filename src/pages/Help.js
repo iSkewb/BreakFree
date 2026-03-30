@@ -26,7 +26,7 @@ const Help = () => {
         </div>
         <div className="faq-item">
           <h4>How do I track my spending?</h4>
-          <p>Your spending is automatically tracked once you link your Capital One account. You’ll receive updates on underused subscriptions and renewal reminders.</p>
+          <p>Your spending is automatically tracked once you add your subscriptions. You’ll see totals and renewal dates on the Dashboard.</p>
         </div>
       </section>
       
