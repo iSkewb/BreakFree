@@ -1,78 +1,142 @@
-.subscription-list {
-    flex-direction: column;
-    display: flex;
-  }
-
 .container {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 32px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
 }
 
 .form-container {
-  flex: 1;
-  margin-right: 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  height: fit-content;
+}
+
+.form-container form h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 28px;
+  letter-spacing: -0.02em;
 }
 
 .subscription-list-container {
-  flex: 1;
-  margin-left: 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  height: fit-content;
 }
 
-form {
+.form-container form {
   display: flex;
   flex-direction: column;
+  gap: 4px;
 }
 
-form label {
-  margin-bottom: 10px;
+.form-container form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 12px;
 }
 
-form input,
-form select {
-  margin-top: 5px;
-  margin-left: 5px;
-  padding: 5px;
-  font-size: 16px;
+.form-container form input,
+.form-container form select {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 0.9rem;
+  padding: 10px 14px;
+  margin-top: 0;
+  margin-left: 0;
+  width: 100%;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
-form button {
-  margin-top: 20px;
-  padding: 10px;
-  font-size: 16px;
-  background-color: #004878;
+.form-container form input:focus,
+.form-container form select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.form-container form input::placeholder {
+  color: var(--text-faint);
+}
+
+.form-container form select option {
+  background: var(--card);
+  color: var(--text);
+}
+
+.form-container form button {
+  margin-top: 8px;
+  padding: 12px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--accent), #6d28d9);
   color: white;
   border: none;
+  border-radius: var(--radius-sm);
   cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: opacity 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  width: 100%;
 }
 
-form button:hover {
-  background-color: #003366;
+.form-container form button:hover {
+  opacity: 0.92;
+  box-shadow: 0 4px 16px var(--accent-glow);
+  transform: translateY(-1px);
+}
+
+.form-container form button:active {
+  transform: translateY(0);
 }
 
 .required {
-  color: red;
-  margin-left: 0px; /* Adjust spacing as needed */
-  font-size: 1.1rem; /* Ensure it's the right size for your labels */
+  color: var(--danger);
+  font-size: 0.85rem;
 }
 
 .dropdown-wrapper {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 4px; /* Space between dropdown and the red dot */
+  gap: 6px;
+}
+
+.dropdown-wrapper select {
+  flex: 1;
 }
 
 .dropdown-label .required {
-  margin-left: 0; /* Prevent unnecessary margin for dropdown labels */
+  margin-left: 0;
 }
 
-label:not(.dropdown-label) .required {
-  margin-left: 4px; /* Maintain margin for non-dropdown labels */
+.form-container label:not(.dropdown-label) .required {
+  margin-left: 4px;
 }
 
-input[type="text"][placeholder="MM/DD/YYYY"] {
-  width: 100%;
-  padding: 8px;
-  margin: 8px 0;
-  box-sizing: border-box;
+/* Date input calendar icon color */
+form input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.5);
+  cursor: pointer;
 }

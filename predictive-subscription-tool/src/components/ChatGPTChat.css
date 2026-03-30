@@ -1,18 +1,60 @@
 .chat-container {
-    display: flex; /* Use flexbox layout */
-    flex-direction: column; /* Arrange children in a column */
-    height: 100vh; /* Full viewport height */
-    width: 100%; /* Full width */
-    background-color: #f0f0f0; /* Light grey background */
-    font-family: 'Arial', sans-serif; /* Arial font */
-    padding: 2rem; /* Padding around the container */
-    /* justify-content: center; Center children vertically */
-    align-items: center; /* Center children horizontally */
-    text-align: center; /* Center text */
+  max-width: 680px;
+  margin: 48px auto;
+  padding: 40px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
 }
+
+.chat-container h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.chat-container button {
+  padding: 12px 24px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--accent), #6d28d9);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: opacity 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  width: auto;
+  max-width: none;
+  margin: 0;
+}
+
+.chat-container button:hover:not(:disabled) {
+  opacity: 0.9;
+  box-shadow: 0 4px 16px var(--accent-glow);
+  transform: translateY(-1px);
+  background-color: unset;
+}
+
+.chat-container button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .advice-text {
-    color: #333; /* Dark grey text color */
-    font-size: 1.2rem; /* Slightly larger font size */
-    margin-top: 1rem; /* Space above the text */
-    line-height: 1.5; /* Line height for readability */
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.75;
+  width: 100%;
 }

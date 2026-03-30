@@ -1,35 +1,69 @@
 .subscription-list {
-  color: rgb(0, 0, 0); /* Change this to the desired color */
+  display: flex;
+  flex-direction: column;
 }
 
 .subscription-list h2 {
-  color: #333333;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
 }
 
 .subscription-list ul {
-  list-style-type: none; /* Remove default list styling */
-  padding: 0; /* Remove default padding */
-  font-size: larger;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .subscription-list li {
-  margin-bottom: 10px;
-  display: flex; /* Use Flexbox to align items */
-  justify-content: space-between; /* Space out the text and button */
-  align-items: center; /* Center items vertically */
-  padding-left: 200px;
-  padding-right: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  color: var(--text);
+  transition: border-color 0.2s ease;
 }
 
-.subscription-list button {
-  margin-left: 10px;
-  color: white; /* Change this to the desired color for the button text */
-  background-color: #004878; /* Add background color to the button */
-  border: none; /* Remove default border */
-  padding: 5px 10px; /* Add padding to the button */
-  cursor: pointer; /* Change cursor to pointer */
+.subscription-list li:hover {
+  border-color: var(--border-light);
 }
 
-.subscription-list button:hover {
-  background-color: #003366; /* Change background color on hover */
+.subscription-list li span {
+  color: var(--text);
+  font-size: 0.875rem;
+}
+
+.subscription-list li span strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.delete-button {
+  background: transparent !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-faint) !important;
+  padding: 5px 12px !important;
+  border-radius: var(--radius-sm) !important;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  margin-left: 12px !important;
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease !important;
+  width: auto !important;
+  max-width: none !important;
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+
+.delete-button:hover {
+  border-color: var(--danger) !important;
+  color: var(--danger) !important;
+  background-color: var(--danger-glow) !important;
 }

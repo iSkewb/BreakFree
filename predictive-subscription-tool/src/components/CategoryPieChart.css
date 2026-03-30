@@ -1,12 +1,25 @@
 .pie-chart-container {
   display: flex;
-  flex-direction: column; /* Stack elements vertically */
-  align-items: center; /* Center align the chart and text */
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
 .no-data-message {
-  margin-top: 0px; /* Space between the chart and the message */
-  font-size: 16px;
-  color: #888888; /* Light gray color */
+  font-size: 0.875rem;
+  color: var(--text-faint);
+  margin-top: 8px;
+}
+
+/* Recharts tooltip override */
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background-color: var(--card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text) !important;
+}
+
+.recharts-legend-item-text {
+  color: var(--text-muted) !important;
+  font-size: 0.8rem !important;
 }

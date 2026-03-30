@@ -3,8 +3,8 @@ import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
 import './CategoryPieChart.css'; // Import the CSS file
 
 const CategoryPieChart = ({ data }) => {
-  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#FF6384'];
-  const GRAY_COLOR = '#CCCCCC';
+  const COLORS = ['#7c3aed', '#06b6d4', '#10b981', '#f59e0b', '#ef4444'];
+  const GRAY_COLOR = '#2a2a4a';
 
   // Check if data is empty or has no meaningful values
   const hasData = data && data.some((entry) => entry.value > 0);
