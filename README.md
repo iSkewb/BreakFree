@@ -1,56 +1,67 @@
-# Break Free - Subscription Management App
+# Break Free
 
-A personalized tool to help users understand and optimize their subscription spending.
-(Hackathon App)
+A subscription management and financial optimization tool. Track what you pay for, spot what you don't need, and get AI-powered advice to cut costs.
+
+Built at TAMUHack 2025.
+
 ---
 
-## Demo / Screenshots
+## Screenshots
 
-| ![Dashboard](https://github.com/user-attachments/assets/bc79a65c-70d5-4e0a-af95-806838cab6ea) | ![Category View](https://github.com/user-attachments/assets/8298bb35-6c97-4b2e-bc0f-0ba2f25f3f46) |
+| | |
 |---|---|
-| Dashboard overview | Category breakdown |
+| ![Landing page](screenshots/landing.png) | ![Dashboard](screenshots/dashboard.png) |
+| Landing page | Dashboard overview |
 
-| ![Analytics](https://github.com/user-attachments/assets/85cd6687-d88d-4b0b-97b2-265e5796266d) | ![Insights](https://github.com/user-attachments/assets/cfef5488-ee70-44e2-a2cc-c838c4ebfe6b) |
+| | |
 |---|---|
-| Subscription analytics | Personalized financial insights |
+| ![Subscriptions](screenshots/subscriptions.png) | ![Advisor](screenshots/advisor.png) |
+| Subscription list with flag-for-review | AI financial advisor |
+
+| | |
+|---|---|
+| ![Profile](screenshots/profile.png) | ![Renewals](screenshots/renewals.png) |
+| Profile view | Upcoming renewals with alerts |
 
 ---
 
-## Inspiration
+## Features
 
-The idea was to create an app that simplifies subscription management and provides actionable insights tailored to individual users.
-
----
-
-## What it does
-
-This app allows users to:
-
-- Enter the subscriptions they pay for.
-- Visualize spending by category.
-- Receive personalized financial advice based on their usage and spending habits.
-
-Once subscriptions and basic personal data are entered, the app analyzes usage to provide targeted insights.
+- **Dashboard** — monthly and annual spending totals, spending by category (pie chart), upcoming renewal alerts (highlighted when due within 7 days), and an insights panel surfacing your most expensive subscription
+- **Subscription tracking** — add subscriptions with name, cost, frequency (monthly/yearly), category, and start date; all costs normalized to a monthly equivalent
+- **Flag for review** — mark subscriptions you're reconsidering; flagged items are tracked separately and factored into the AI advisor
+- **AI Advisor** — sends your full subscription list, profile preferences, and flagged subscriptions to GPT-4o-mini for personalized advice on what to cut, bundle, or keep
+- **Profile** — household size, budget range, student status, and preferred frequency; displayed as a read-only view with an edit flow
+- **CSV export** — download your full subscription list with next renewal dates
 
 ---
 
-## How it was built
+## Stack
 
-- **Frontend:** React, JavaScript, CSS  
-- **Backend:** Node.js  
+- **Frontend:** React 19, React Router 7, Recharts
+- **AI:** OpenAI GPT-4o-mini via REST
+- **Persistence:** localStorage
 
----
-
-## What we learned
-
-- Using React to build a dynamic, interactive UI.
-- Connecting a frontend with an API backend.
-- Structuring components for scalability and maintainability.
-
----
-
-## Built With
-
-![CSS](https://img.shields.io/badge/css-264de4?style=flat&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/javascript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 ![React](https://img.shields.io/badge/react-61DAFB?style=flat&logo=react&logoColor=black)
+![JavaScript](https://img.shields.io/badge/javascript-F7DF1E?style=flat&logo=javascript&logoColor=black)
+![CSS](https://img.shields.io/badge/css-264de4?style=flat&logo=css3&logoColor=white)
+
+---
+
+## Getting Started
+
+```bash
+npm install
+```
+
+Create a `.env` file:
+
+```
+REACT_APP_OPENAI_API_KEY=your_key_here
+```
+
+```bash
+npm start
+```
+
+> The AI advisor requires a valid OpenAI API key. All other features work without one.
