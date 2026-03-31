@@ -113,66 +113,69 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Insights */}
-      {subscriptions.length > 0 && (
-        <div className="dashboard-insights">
-          <h3>Insights</h3>
-          <div className="insights-grid">
-            {topSub && (
-              <div className="insight-item">
-                <span className="insight-label">Most expensive</span>
-                <span className="insight-value">
-                  {topSub.name} — ${getMonthlyCost(topSub).toFixed(2)}/mo
-                </span>
+      <div className="dashboard-body">
+        {/* Left: Pie Chart */}
+        <div className="dashboard-category-pie-chart">
+          <h3>Monthly Spending by Category</h3>
+          <CategoryPieChart data={getCategoryData()} />
+        </div>
+
+        {/* Right: Insights + Renewals */}
+        <div className="dashboard-right-col">
+          {subscriptions.length > 0 && (
+            <div className="dashboard-insights">
+              <h3>Insights</h3>
+              <div className="insights-grid">
+                {topSub && (
+                  <div className="insight-item">
+                    <span className="insight-label">Most expensive</span>
+                    <span className="insight-value">
+                      {topSub.name} — ${getMonthlyCost(topSub).toFixed(2)}/mo
+                    </span>
+                  </div>
+                )}
+                {flaggedSubs.length > 0 && (
+                  <div className="insight-item insight-warning">
+                    <span className="insight-label">Reconsidering ({flaggedSubs.length})</span>
+                    <span className="insight-value">
+                      {flaggedSubs.map((s) => s.name).join(', ')} — saves ${flaggedMonthly.toFixed(2)}/mo if cancelled
+                    </span>
+                  </div>
+                )}
               </div>
-            )}
-            {flaggedSubs.length > 0 && (
-              <div className="insight-item insight-warning">
-                <span className="insight-label">Reconsidering ({flaggedSubs.length})</span>
-                <span className="insight-value">
-                  {flaggedSubs.map((s) => s.name).join(', ')} — saves ${flaggedMonthly.toFixed(2)}/mo if cancelled
-                </span>
-              </div>
+            </div>
+          )}
+
+          <div className="dashboard-renewals">
+            <h3>Upcoming Renewals</h3>
+            {nextRenewals.length === 0 ? (
+              <p className="empty-state">No subscriptions yet.</p>
+            ) : (
+              <ul>
+                {nextRenewals.map((renewal) => (
+                  <li
+                    key={renewal.id}
+                    className={
+                      renewal.days <= 7 ? 'renewal-soon' : renewal.flagged ? 'renewal-flagged' : ''
+                    }
+                  >
+                    <span>
+                      {renewal.name}
+                      {renewal.days <= 7 && <span className="renewal-badge">Due soon</span>}
+                      {renewal.flagged && renewal.days > 7 && <span className="flagged-badge-sm">Reconsidering</span>}
+                    </span>
+                    <span className="activity-date">
+                      {renewal.date ? renewal.date.toISOString().split('T')[0] : 'N/A'}
+                      {renewal.days <= 7 && renewal.days > 0 && (
+                        <span className="days-label"> · {renewal.days}d</span>
+                      )}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             )}
           </div>
         </div>
-      )}
-
-      {/* Category Pie Chart */}
-      <div className="dashboard-category-pie-chart">
-        <h3>Monthly Spending by Category</h3>
-        <CategoryPieChart data={getCategoryData()} />
-      </div>
-
-      {/* Next Renewal Dates */}
-      <div className="dashboard-renewals">
-        <h3>Upcoming Renewals</h3>
-        {nextRenewals.length === 0 ? (
-          <p className="empty-state">No subscriptions yet.</p>
-        ) : (
-          <ul>
-            {nextRenewals.map((renewal) => (
-              <li
-                key={renewal.id}
-                className={
-                  renewal.days <= 7 ? 'renewal-soon' : renewal.flagged ? 'renewal-flagged' : ''
-                }
-              >
-                <span>
-                  {renewal.name}
-                  {renewal.days <= 7 && <span className="renewal-badge">Due soon</span>}
-                  {renewal.flagged && renewal.days > 7 && <span className="flagged-badge-sm">Reconsidering</span>}
-                </span>
-                <span className="activity-date">
-                  {renewal.date ? renewal.date.toISOString().split('T')[0] : 'N/A'}
-                  {renewal.days <= 7 && renewal.days > 0 && (
-                    <span className="days-label"> · {renewal.days}d</span>
-                  )}
-                </span>
-              </li>
-            ))}
-          </ul>
-        )}
       </div>
     </div>
   );

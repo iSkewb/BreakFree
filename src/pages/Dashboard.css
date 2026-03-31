@@ -1,7 +1,7 @@
 .dashboard {
-  max-width: 1100px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 40px 32px;
+  padding: 40px 40px;
 }
 
 .dashboard-header {
@@ -110,7 +110,6 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 28px;
-  margin-bottom: 24px;
 }
 
 .dashboard-insights h3 {
@@ -159,13 +158,26 @@
   color: var(--warning);
 }
 
+/* Two-column body */
+.dashboard-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.dashboard-right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 /* Chart Section */
 .dashboard-category-pie-chart {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 28px;
-  margin-bottom: 24px;
 }
 
 .dashboard-category-pie-chart h3 {
@@ -182,7 +194,6 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 28px;
-  margin-bottom: 24px;
 }
 
 .dashboard-recent-activities h3,
