@@ -8,20 +8,17 @@ Built at TAMUHack 2025.
 
 ## Screenshots
 
-| | |
-|---|---|
-| ![Landing page](screenshots/landing.png) | ![Dashboard](screenshots/dashboard.png) |
 | Landing page | Dashboard overview |
-
-| | |
 |---|---|
-| ![Subscriptions](screenshots/subscriptions.png) | ![Advisor](screenshots/advisor.png) |
+| <img width="400" alt="Landing page" src="https://github.com/user-attachments/assets/35d80d25-e189-4879-a912-e309744d8f24" /> | <img width="400" alt="Dashboard overview" src="https://github.com/user-attachments/assets/015fd3ad-d0f3-4285-918e-d1aed629e0e1" /> |
+
 | Subscription list with flag-for-review | AI financial advisor |
-
-| | |
 |---|---|
-| ![Profile](screenshots/profile.png) | ![Renewals](screenshots/renewals.png) |
+| <img width="400" alt="Subscription list" src="https://github.com/user-attachments/assets/c31a6fa5-5e13-4f80-8449-4e5b64ead970" /> | <img width="400" alt="AI financial advisor" src="screenshots/advisor.png" /> |
+
 | Profile view | Upcoming renewals with alerts |
+|---|---|
+| <img width="400" alt="Profile view" src="https://github.com/user-attachments/assets/da9a78eb-2e73-4996-82cd-10577f082dad" /> | <img width="400" alt="Upcoming renewals" src="screenshots/renewals.png" /> |
 
 ---
 
