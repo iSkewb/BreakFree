@@ -67,3 +67,55 @@
   color: var(--danger) !important;
   background-color: var(--danger-glow) !important;
 }
+
+.list-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.flag-button {
+  background: transparent !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-faint) !important;
+  padding: 5px 12px !important;
+  border-radius: var(--radius-sm) !important;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease !important;
+  width: auto !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+.flag-button:hover {
+  border-color: var(--warning) !important;
+  color: var(--warning) !important;
+  background-color: var(--warning-glow) !important;
+}
+
+.flag-button.active {
+  border-color: var(--warning) !important;
+  color: var(--warning) !important;
+  background-color: var(--warning-glow) !important;
+}
+
+.flagged-badge {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 2px 8px;
+  background: var(--warning-glow);
+  border: 1px solid var(--warning);
+  color: var(--warning);
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  vertical-align: middle;
+}
+
+.subscription-list li.flagged {
+  border-color: var(--warning) !important;
+}

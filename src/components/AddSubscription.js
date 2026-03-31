@@ -4,7 +4,7 @@ import SubscriptionList from './SubscriptionList'; // Import SubscriptionList
 import './AddSubscription.css'; // Import AddSubscription.css
 
 const AddSubscription = () => {
-  const { subscriptions, addSubscription, removeSubscription } = useSubscriptions();
+  const { subscriptions, addSubscription, removeSubscription, toggleCancelFlag } = useSubscriptions();
   const [name, setName] = useState('');
   const [cost, setCost] = useState('');
   const [date, setDate] = useState('');
@@ -94,7 +94,8 @@ const AddSubscription = () => {
         <div className="subscription-list-container">
           <SubscriptionList
             subscriptions={subscriptions}
-            onDelete={(id) => removeSubscription(id)} // Handle delete via context
+            onDelete={(id) => removeSubscription(id)}
+            onToggleFlag={(id) => toggleCancelFlag(id)}
           />
         </div>
       </div>

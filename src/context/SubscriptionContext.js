@@ -31,8 +31,14 @@ export const SubscriptionProvider = ({ children }) => {
     setSubscriptions((prev) => prev.filter((sub) => sub.id !== id));
   };
 
+  const toggleCancelFlag = (id) => {
+    setSubscriptions((prev) =>
+      prev.map((sub) => sub.id === id ? { ...sub, flagged: !sub.flagged } : sub)
+    );
+  };
+
   return (
-    <SubscriptionContext.Provider value={{ subscriptions, addSubscription, removeSubscription }}>
+    <SubscriptionContext.Provider value={{ subscriptions, addSubscription, removeSubscription, toggleCancelFlag }}>
       {children}
     </SubscriptionContext.Provider>
   );

@@ -25,3 +25,5 @@ yarn-error.log*
 # API keys
 api_key.txt
 .env
+
+.claude

@@ -3,43 +3,59 @@ import axios from 'axios';
 import './ChatGPTChat.css';
 
 const ChatGPTChat = () => {
-  const [localData, setLocalData] = useState({});  // State for storing user data
-  const [advice, setAdvice] = useState('');  // State for storing the response (advice)
-  const [loading, setLoading] = useState(false);  // State for loading indicator
+  const [localData, setLocalData] = useState({});
+  const [advice, setAdvice] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  // Fetch data from localStorage when the component mounts
   useEffect(() => {
-    const savedProfileData = localStorage.getItem('profileFormData');  // Read profile data from localStorage
-    const savedSubscriptionData = localStorage.getItem('subscriptionData');  // Read subscription data from localStorage
+    const savedProfile = localStorage.getItem('profileFormData');
+    const savedSubscriptions = localStorage.getItem('subscriptions');
 
-    const profileData = savedProfileData ? JSON.parse(savedProfileData) : {};
-    const subscriptionData = savedSubscriptionData ? JSON.parse(savedSubscriptionData) : {};
+    const profile = savedProfile ? JSON.parse(savedProfile) : {};
+    const subscriptions = savedSubscriptions ? JSON.parse(savedSubscriptions) : [];
 
-    setLocalData({ ...profileData, subscriptions: subscriptionData });  // Combine and set to state
+    const flagged = subscriptions.filter((s) => s.flagged).map((s) => s.name);
+
+    setLocalData({ profile, subscriptions, flaggedForReview: flagged });
   }, []);
 
-  // Handler for analyzing data and requesting advice
   const analyzeData = async () => {
-    if (!localData || Object.keys(localData).length === 0) {
-      alert('No data found in localStorage!');
+    const { subscriptions = [] } = localData;
+
+    if (subscriptions.length === 0) {
+      alert('No subscriptions found. Add some subscriptions first.');
       return;
     }
 
     setLoading(true);
     try {
-      // Prepare the prompt with the user's data (and other context as needed)
-      const prompt = `You are a financial advisor. Based on the following subscription data, provide detailed financial advice and suggestions for optimizing expenses. Consider the user's spending habits, potential savings, and the companies they are subscribed to and any relevant information related. Here is the user's subscription data: ${JSON.stringify(localData)}. Keep it to a few sentences`;
+      const totalMonthly = subscriptions.reduce((t, s) => {
+        return t + (s.frequency === 'yearly' ? s.cost / 12 : s.cost);
+      }, 0);
 
-      // Send a request to OpenAI GPT API
+      const profileSummary = Object.keys(localData.profile || {}).length > 0
+        ? `User profile: ${JSON.stringify(localData.profile)}.`
+        : '';
+
+      const flaggedSummary = localData.flaggedForReview?.length > 0
+        ? `The user is reconsidering cancelling: ${localData.flaggedForReview.join(', ')}.`
+        : '';
+
+      const subList = subscriptions
+        .map((s) => `${s.name} ($${s.cost}/${s.frequency}, ${s.category})`)
+        .join('; ');
+
+      const prompt = `You are a financial advisor helping someone manage their subscriptions. ${profileSummary} They spend $${totalMonthly.toFixed(2)}/month across ${subscriptions.length} subscriptions: ${subList}. ${flaggedSummary} Give concise, specific advice on optimizing their spending — what to cut, bundle, or keep. Keep it to 3-4 sentences.`;
+
       const response = await axios.post(
         'https://api.openai.com/v1/chat/completions',
         {
           model: 'gpt-4o-mini-2024-07-18',
           messages: [
-            { role: 'system', content: 'You are a sophisticated financial advisor.' },
+            { role: 'system', content: 'You are a concise financial advisor specializing in subscription optimization.' },
             { role: 'user', content: prompt }
           ],
-          max_tokens: 200,
+          max_tokens: 250,
           temperature: 0.7,
         },
         {
@@ -50,20 +66,23 @@ const ChatGPTChat = () => {
         }
       );
 
-      // Set the advice based on the API response
       setAdvice(response.data.choices[0].message.content || 'No advice received.');
     } catch (error) {
       console.error('Error fetching advice:', error);
-      setAdvice('There was an error analyzing your data. Please try again.');
+      setAdvice('There was an error connecting to the advisor. Please check your API key and try again.');
     }
     setLoading(false);
   };
 
   return (
     <div className="chat-container">
-      <h1>Financial Advice Chat</h1>
+      <h1>Financial Advisor</h1>
+      <p className="chat-subtitle">
+        Get personalized advice based on your subscriptions
+        {localData.flaggedForReview?.length > 0 && ` and ${localData.flaggedForReview.length} flagged for review`}.
+      </p>
       <button onClick={analyzeData} disabled={loading}>
-        {loading ? 'Analyzing...' : 'Get Financial Advice'}
+        {loading ? 'Analyzing...' : 'Get Advice'}
       </button>
       {advice && <p className="advice-text">{advice}</p>}
     </div>

@@ -9,7 +9,12 @@ const Profile = () => {
     { title: 'Preferred Subscription Frequency', options: ['Monthly', 'Yearly'] }
   ];
 
-  const [formData, setFormData] = useState(Array(dropdownData.length).fill(''));
+  const [formData, setFormData] = useState(() => {
+    const saved = localStorage.getItem('profileFormData');
+    if (!saved) return Array(dropdownData.length).fill('');
+    const parsed = JSON.parse(saved);
+    return dropdownData.map((d) => parsed[d.title] || '');
+  });
 
   const handleChange = (index, value) => {
     const newFormData = [...formData];

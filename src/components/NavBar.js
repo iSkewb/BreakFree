@@ -11,10 +11,8 @@ const NavBar = () => {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/dashboard">Dashboard</Link></li>
         <li><Link to="/add-subscription">Subscriptions</Link></li>
-        <li><Link to="/help">Help</Link></li>
-        <li><Link to="/contact-us">Contact Us</Link></li>
         <li><Link to="/profile">Profile</Link></li>
-        <li><Link to="/chat">Chat</Link></li>
+        <li><Link to="/chat">Advisor</Link></li>
       </ul>
     </div>
   );

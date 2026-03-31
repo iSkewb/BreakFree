@@ -1,5 +1,5 @@
 import React from 'react';
-import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
+import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import './CategoryPieChart.css'; // Import the CSS file
 
 const CategoryPieChart = ({ data }) => {
@@ -14,26 +14,28 @@ const CategoryPieChart = ({ data }) => {
 
   return (
     <div className="pie-chart-container">
-      <PieChart width={400} height={400}>
-        <Pie
-          data={hasData ? data : defaultData}
-          cx={200}
-          cy={200}
-          labelLine={false}
-          outerRadius={150}
-          fill="#8884d8"
-          dataKey="value"
-        >
-          {(hasData ? data : defaultData).map((entry, index) => (
-            <Cell
-              key={`cell-${index}`}
-              fill={hasData ? COLORS[index % COLORS.length] : GRAY_COLOR}
-            />
-          ))}
-        </Pie>
-        <Tooltip />
-        {hasData ? <Legend /> : null} {/* Render Legend only if there is data */}
-      </PieChart>
+      <ResponsiveContainer width="100%" height={300}>
+        <PieChart>
+          <Pie
+            data={hasData ? data : defaultData}
+            cx="50%"
+            cy="50%"
+            labelLine={false}
+            outerRadius={110}
+            fill="#8884d8"
+            dataKey="value"
+          >
+            {(hasData ? data : defaultData).map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={hasData ? COLORS[index % COLORS.length] : GRAY_COLOR}
+              />
+            ))}
+          </Pie>
+          <Tooltip formatter={(value) => `$${value.toFixed(2)}/mo`} />
+          {hasData ? <Legend /> : null}
+        </PieChart>
+      </ResponsiveContainer>
       {!hasData && (
         <div className="no-data-message">
           <p>No Subscriptions</p>

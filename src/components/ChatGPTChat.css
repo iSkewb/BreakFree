@@ -12,6 +12,13 @@
   gap: 20px;
 }
 
+.chat-subtitle {
+  color: var(--text-faint);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-top: -8px;
+}
+
 .chat-container h1 {
   font-size: 1.5rem;
   font-weight: 700;
