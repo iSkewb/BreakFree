@@ -36,7 +36,7 @@ const Landing = () => {
           Break free from <span className="landing-accent">subscription chaos</span>
         </h1>
         <p className="landing-sub">
-          One dashboard to track, analyze, and optimize everything you pay for — every month.
+          One dashboard to track, analyze, and optimize everything you pay for every month.
         </p>
         <div className="landing-actions">
           <button className="landing-btn-primary" onClick={() => navigate('/dashboard')}>
